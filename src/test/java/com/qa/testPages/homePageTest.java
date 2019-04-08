@@ -2,7 +2,7 @@ package com.qa.testPages;
 
 import java.util.List;
 
-import org.openqa.selenium.By;
+
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -32,28 +32,18 @@ public class homePageTest extends baseClass
 		
 	}
 	
-//	@Test(priority=1)
-//	public void validate_Eleemnts()
-//	{
-//		boolean logo_visible=homepage.verify_Logo();
-//		boolean logo_SerchTxtBox=homepage.verify_SerchTxtBox();
-//		boolean logo_link_advancedOptions=homepage.verify_link_advancedOptions();
-//		boolean logo_btn_submitSearch=homepage.verify_btn_submitSearch();
-//		
-//		if(logo_visible==true & logo_SerchTxtBox==true & logo_link_advancedOptions==true & logo_btn_submitSearch==true)
-//		{
-//		   
-//		}
-//		else
-//		{
-//		   Assert.fail("Element not found, check validate_Eleemnts() in HomePageTest() class."); 
-//		}
-//	}
 	@Test(priority=1)
+	public void validate_Eleemnts()
+	{
+		boolean logo_visible=homepage.verify_Logo();
+		
+		Assert.assertTrue(logo_visible);
+	}
+	
+	@Test(priority=2)
 	public void search_peroformed()
 	{
 		homepage=new homePage();
-		
 		homepage.enter_Searchtext("London");
 		homepage.click_advancedSearch();
 		wait_twoSEC();
@@ -72,28 +62,27 @@ public class homePageTest extends baseClass
 		
 		homepage.click_SearchButton();
 		
-		try 
-		{
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		wait_FourSEC();
+
 		
 		
 		/**
-		 *    //ul[@class='listing-results clearfix js-gtm-list']/li  -- get list count
-		 *    
-		 *    //ul[@class='listing-results clearfix js-gtm-list']/li/div/div[2]//a   // reached to mentioned Price 
-		 *    
-		 *    
+		 Steps are :
+		 
+		 1. Get all Property Listed in the page, where we wanna get the 5th item link, and click on it and verify
+		 2. got to 5th Item
+		 3. copy the name of the property.
+		 4. get the link of the 5th item
+		 5. navigate to this link, and match the name of the property with saved name.
+		 
+		 Xpaths :
+		 
+		 //ul[@class='listing-results clearfix js-gtm-list']/li  -- get list count
+		 //ul[@class='listing-results clearfix js-gtm-list']/li/div/div[2]//a   // reached to mentioned Price 
+   
 		 */
 		
-		// Get all Property Listed in the page, where we wanna get the 5th item link, and click on it and verify
-		// got to 5th Item
-		// copy the name of the property.
-		// get the link of the 5th item
-		// navigate to this link, and match the name of the property with saved name.
+		
 		
 		List<WebElement> prop = homepage.poropLi();
 		System.out.println("available propperties are : " + prop.size());
@@ -102,10 +91,12 @@ public class homePageTest extends baseClass
 		{
 			if(i==5)
 			{
-				 
-				// get title of the proprty and save it , to comapre later
-				// naviagate to the link and match the price and title
-				//System.out.println(driver.findElement(By.xpath(homepage.prop_preFix+i+homepage.prop_postFix)).getText());
+				 /**
+				     Get title of the proprty and save it , to comapre later
+				     Click On 5th Property Link &&  match the title from homePage Title with Landing Page title
+				  */
+				
+				
 				
 				
 				// get price of the property
@@ -178,7 +169,7 @@ public class homePageTest extends baseClass
 	@AfterMethod
 	public void exitSetup()
 	{
-		//driver.quit();
+		driver.quit();
 	}
 	
 	
