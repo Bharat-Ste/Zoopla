@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="60266" started-at="2019-04-08T08:01:52Z" finished-at="2019-04-08T08:02:53Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="60266" started-at="2019-04-08T08:01:52Z" finished-at="2019-04-08T08:02:53Z">
+      <class name="com.qa.testPages.homePageTest">
+        <test-method status="PASS" signature="browweLaunch()[pri:0, instance:com.qa.testPages.homePageTest@3c0ecd4b]" name="browweLaunch" is-config="true" duration-ms="8927" started-at="2019-04-08T08:01:52Z" finished-at="2019-04-08T08:02:01Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- browweLaunch -->
+        <test-method status="PASS" signature="search_peroformed()[pri:1, instance:com.qa.testPages.homePageTest@3c0ecd4b]" name="search_peroformed" duration-ms="51319" started-at="2019-04-08T08:02:01Z" finished-at="2019-04-08T08:02:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- search_peroformed -->
+        <test-method status="PASS" signature="exitSetup()[pri:0, instance:com.qa.testPages.homePageTest@3c0ecd4b]" name="exitSetup" is-config="true" duration-ms="1" started-at="2019-04-08T08:02:53Z" finished-at="2019-04-08T08:02:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- exitSetup -->
+      </class> <!-- com.qa.testPages.homePageTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
