@@ -50,7 +50,7 @@ public class homePageTest extends baseClass
 	
 	
 	
-	@Test(priority=2,enabled=false)
+	@Test(priority=2,enabled=true)
 	public void search_peroformed()
 	{
 		homepage=new homePage();
