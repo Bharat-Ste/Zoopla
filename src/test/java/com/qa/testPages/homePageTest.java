@@ -2,12 +2,13 @@ package com.qa.testPages;
 
 import java.util.List;
 
-
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
 
 import com.zoopla.pages.homePage;
 import com.zoopla.testBase.baseClass;
@@ -32,15 +33,24 @@ public class homePageTest extends baseClass
 		
 	}
 	
-	@Test(priority=1)
+	@Test(priority=1,enabled=true)
 	public void validate_Eleemnts()
 	{
-		boolean logo_visible=homepage.verify_Logo();
+		System.out.println("inside validate_Eleemnts() ");
 		
-		Assert.assertTrue(logo_visible);
+		wait_FourSEC();
+		boolean res= driver.findElement(By.xpath("//img[@class='icon--logo']")).isDisplayed();
+        Assert.assertTrue(res, "Logo image not fouud !");
+        //System.out.println( "verify_Logo() method : " + homepage.verify_Logo());  // Getting java.lang.NullPointerException
+        
+
+		
 	}
 	
-	@Test(priority=2)
+	
+	
+	
+	@Test(priority=2,enabled=false)
 	public void search_peroformed()
 	{
 		homepage=new homePage();
@@ -169,7 +179,7 @@ public class homePageTest extends baseClass
 	@AfterMethod
 	public void exitSetup()
 	{
-		driver.quit();
+	 driver.quit();
 	}
 	
 	

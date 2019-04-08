@@ -3,6 +3,7 @@ package com.zoopla.pages;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
@@ -19,7 +20,10 @@ public class homePage extends baseClass
 	 */
 	
 	//Verify Logo
+	
 	@FindBy(xpath="//img[@class='icon--logo']") WebElement img_logo;
+	
+	@FindBy(xpath="//li[@id='mn-buy']/a") WebElement for_Sale;
 	
 	@FindBy(xpath="//input[@id='search-input-location']") WebElement inp_searchTxtBox;
 	@FindBy(xpath="//a[@class='search-advanced-toggle link']") WebElement link_advancedOptions;
@@ -51,6 +55,24 @@ public class homePage extends baseClass
 	@FindBy(xpath="//h1[@class='ui-property-summary__title ui-title-subgroup']") WebElement landing_page_Title;
 	
 	
+	
+	
+	public boolean verify_Logo()
+	{
+		wait_twoSEC();
+
+		//boolean res= img_logo.isDisplayed();
+		boolean res= driver.findElement(By.xpath("//img[@class='icon--logo']")).isDisplayed();
+		return res;
+		
+	}
+	
+	
+	public String verify_for_Sale()
+	{
+		
+		return for_Sale.getText();
+	}
 	
 	
 	public List<WebElement> poropLi()
@@ -99,18 +121,23 @@ public class homePage extends baseClass
 	}
 	
 	
-	public boolean verify_Logo()
-	{
-		return img_logo.isDisplayed();
-	}
+	
+
 	
 	public boolean verify_SerchTxtBox()
 	{
-		return inp_searchTxtBox.isDisplayed();
+		wait_twoSEC();
+		boolean inp_searchTxtBox_=inp_searchTxtBox.isDisplayed();
+		System.out.println("visibility of inp_searchTxtBox is : " + inp_searchTxtBox_);
+		
+		return inp_searchTxtBox_;
 	}
 	
 	public boolean verify_link_advancedOptions()
 	{
+		wait_twoSEC();
+		boolean link_advancedOptions_=link_advancedOptions.isDisplayed();
+		System.out.println("visibility of link_advancedOptions_ is : " + link_advancedOptions_);
 		return link_advancedOptions.isDisplayed();
 	}
 	
@@ -135,25 +162,9 @@ public class homePage extends baseClass
 	public void select_dropdwnValue(int no)
 	{
 		Select drop= new Select(drp_sortBy);
-//		System.out.println(drop);
-//		List<WebElement> li = drop.getOptions();
-//		System.out.println(li.size());
-//		
-//		for(WebElement l:li)
-//		{
-//			System.out.println(l.getText());
-//		}
 		wait_twoSEC();
 		drop.selectByIndex(no);
 		wait_twoSEC();
-		
-		
-		
-		/**
-		 *     Get all links
-		 */
-		
-		
 	}
 	
 	
